@@ -1,25 +1,35 @@
+
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>sheet</title>
 <script src=
 "https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+  <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
 <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
 </head>
 
 <body>
 <a-scene>
+    <assets>
+    <a-asset-item id="shooter" src="shooter-20251122T074810Z-1-001/shooter/gun.gltf"></a-asset-item>
+    <a-asset-item id="tank" src="tank-20251122T074806Z-1-001/tank/scene.gltf"></a-asset-item>
+    <a-asset-item id="collide" src="navmesh.gltf"></a-asset-item>
+    </assets>
     <a-camera position="0 5 0">
+        <a-entity id="weapon" gltf-model="#shooter" position="0 -4.4 -3">
+        </a-entity>
     </a-camera>
-    <a-entity environment="preset: goldmine">
+    <a-entity id="navigation-mesh" gltf-model="#collide" visible="false" nav-mesh>
+    </a-entity>
+    <a-entity environment="preset: egypt">
 
     </a-entity>
-<a-box height="4" width="100" color="#808080" position="0 0 -5" depth="100">
-
-
-</a-box>
-<!--find batteling objects/enemies-->
-
+<a-entity id="enemy" gltf-model="#tank" position="-10 0 -15" animation-mixer scale="0.015 0.015 0.015">
+</a-entity>
 </a-scene>
 
 </body>
